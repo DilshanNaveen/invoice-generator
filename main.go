@@ -166,12 +166,12 @@ func getPayload() InvoiceData {
 
 func main() {
 	// Load environment variables from .env file
-	err := godotenv.Load()
+	godotenv.Load()
 
 	data := getPayload()
 
 	// Step 1: Generate the PDF
-	err = generatePDF(data)
+	err := generatePDF(data)
 	if err != nil {
 		fmt.Println("Failed to generate PDF:", err)
 		os.Exit(1)
