@@ -1,9 +1,9 @@
-name: Test Generator
+name: Send Invoices
 
 on:
-  push:
-    branches:
-      - main
+  schedule:
+    # Runs every month on the 17th at 00:00 UTC
+    - cron: '0 0 17 * *'
 
 jobs:
   test:
@@ -32,7 +32,7 @@ jobs:
           SMTP_PORT: ${{ secrets.SMTP_PORT }}
           SMTP_USER: ${{ secrets.SMTP_USER }}
           SMTP_PASS: ${{ secrets.SMTP_PASS }}
-          RECIPIENTS: ${{ secrets.TEST_RECIPIENTS }}
+          RECIPIENTS: ${{ secrets.RECIPIENTS }}
           EMPLOYEE_NUMBER: ${{ secrets.EMPLOYEE_NUMBER }}
           AMOUNT: ${{ secrets.AMOUNT }}
           BANK: ${{ secrets.BANK }}
