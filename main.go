@@ -167,9 +167,6 @@ func getPayload() InvoiceData {
 func main() {
 	// Load environment variables from .env file
 	err := godotenv.Load()
-	if err != nil {
-		fmt.Println("error loading .env file: %v", err)
-	}
 
 	data := getPayload()
 

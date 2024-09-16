@@ -21,6 +21,11 @@ jobs:
       - name: Install dependencies
         run: go mod tidy
 
+      - name: Install wkhtmltopdf
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y wkhtmltopdf
+
       - name: Run Go script
         env:
           SMTP_HOST: ${{ secrets.SMTP_HOST }}
