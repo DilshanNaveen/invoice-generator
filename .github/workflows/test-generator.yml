@@ -1,0 +1,47 @@
+name: Test Generator
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Go
+        uses: actions/setup-go@v3
+        with:
+          go-version: '1.20'
+
+      - name: Install dependencies
+        run: go mod tidy
+
+      - name: Run Go script
+        env:
+          SMTP_HOST: ${{ secrets.SMTP_HOST }}
+          SMTP_PORT: ${{ secrets.SMTP_PORT }}
+          SMTP_USER: ${{ secrets.SMTP_USER }}
+          SMTP_PASS: ${{ secrets.SMTP_PASS }}
+          RECIPIENTS: ${{ secrets.RECIPIENTS }}
+          EMPLOYEE_NUMBER: ${{ secrets.EMPLOYEE_NUMBER }}
+          AMOUNT: ${{ secrets.AMOUNT }}
+          BANK: ${{ secrets.BANK }}
+          BANK_BRANCH: ${{ secrets.BANK_BRANCH }}
+          ACCOUNT_NO: ${{ secrets.ACCOUNT_NO }}
+          SWIFT_CODE: ${{ secrets.SWIFT_CODE }}
+          BANK_CODE: ${{ secrets.BANK_CODE }}
+          BRANCH_CODE: ${{ secrets.BRANCH_CODE }}
+          NAME: ${{ secrets.NAME }}
+          ADDRESS_LINE_1: ${{ secrets.ADDRESS_LINE_1 }}
+          ADDRESS_LINE_2: ${{ secrets.ADDRESS_LINE_2 }}
+          CITY: ${{ secrets.CITY }}
+          POSTAL_CODE: ${{ secrets.POSTAL_CODE }}
+          COUNTRY: ${{ secrets.COUNTRY }}
+          BILL_TO: ${{ secrets.BILL_TO }}
+          BILL_TO_ADDRESS: ${{ secrets.BILL_TO_ADDRESS }}
+        run: go run main.go
