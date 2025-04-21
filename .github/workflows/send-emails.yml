@@ -1,4 +1,4 @@
-name: Send Invoices
+name: Send invoices
 
 on:
   schedule:
