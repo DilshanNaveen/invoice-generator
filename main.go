@@ -165,7 +165,7 @@ func getPayload() InvoiceData {
 }
 
 func main() {
-	// Load environment variables from .env file
+	// Load environment variables from .env fil
 	godotenv.Load()
 
 	data := getPayload()
