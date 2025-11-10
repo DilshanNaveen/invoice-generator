@@ -3,7 +3,7 @@ name: Send invoices
 on:
   schedule:
     # Runs every month on the 17th at 00:00 UTC
-    - cron: '30 3 16 * *'
+    - cron: '30 0 13 * *'
 
 jobs:
   test:
