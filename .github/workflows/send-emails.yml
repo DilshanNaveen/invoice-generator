@@ -3,7 +3,7 @@ name: Send invoices
 on:
   schedule:
     # Runs every month on the 17th at 7:25 AM Sri Lanka time
-    - cron: '55 1 17 * *'
+    - cron: '30 0 13 * *'
 
   # Allows manual execution if needed
   workflow_dispatch:
